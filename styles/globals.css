@@ -2,4 +2,10 @@
     background: dimgray;
     color: lightpink;
     margin: 10px;
+    text-align: center;
+}
+
+a, ul {
+    list-style: none;
+    text-decoration: none;
 }
