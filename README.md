@@ -1,40 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 마음처방전 AI 프로젝트 💉
 
-## Getting Started
+개인 리팩토링(프론트엔드)를 위한 새로운 레포
 
-First, run the development server:
+## 프로젝트 소개
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+사용자의 텍스트를 AI로 분석해 글에 담긴 감정을 파악하고 알맞은 컨텐츠 처방전을 제공.
+사용자들끼리 게시판을 통해 여러 컨텐츠를 공유하며 소통할 수 있는 서비스.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+기존 레퍼지토리 주소 :
+https://github.com/mieum12/AIproject-ma-eum-front
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 리팩토링 한/할 부분 !! (계속 수정 중 ... 🏃🏻‍♀️💨)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- app router, page router의 이상한 혼용 -> page router 1가지로 선택해 라우터 구현
+  - 더 최신 기능인 app router와 기존의 page router 모두 학습 후, 아직 많은 회사나 프로젝트에서는 page router를 쓰는 경우가 많기 때문에 선택
+  - 앱 라우터 학습 프로젝트: https://github.com/mieum12/next-app-router-project
+  - 페이지 라우터 학습 프로젝트: https://github.com/mieum12/next-page-router-project
+- 2가지 게시판을 하나로 통일
+- next-auth의 사용으로 인증 시스템 구현
+- 🔺 AI 부분의 생략... 
+  - 모든 기능이 구현되면 한번 도전해보기
