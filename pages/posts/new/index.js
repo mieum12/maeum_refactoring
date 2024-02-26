@@ -7,7 +7,7 @@ export default function NewPostPage() {
   async function addPostHandler(enteredPostData){
     //fetch
     console.log(enteredPostData)
-    const response = await fetch('/api/new-post', {
+    const response = await fetch('/api/new', {
       method: 'POST',
       body: JSON.stringify(enteredPostData),
       headers: {
