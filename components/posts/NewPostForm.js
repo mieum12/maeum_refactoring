@@ -79,23 +79,10 @@ const Form = styled.form`
     padding: 0.25rem;
     width: 100%;
   }
-
+  
   .btn {
-    margin-top: 10px;
+    margin-top: 50px;
+    margin-bottom: 10px;
     text-align: right;
-  }
-
-  .btn button {
-    font: inherit;
-    cursor: pointer;
-    padding: 0.5rem 1.5rem;
-    border: 1px solid white;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  .btn button:hover,
-  .btn button:active {
-    background-color: #939292;
   }
 `

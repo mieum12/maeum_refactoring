@@ -15,7 +15,6 @@ export default Layout;
 const LayoutWrapper = styled.div`
   .main {
     margin: auto;
-    width: 90%;
-    max-width: 500px;
+    width: 80%;
   }
 `

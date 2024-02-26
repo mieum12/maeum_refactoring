@@ -9,3 +9,16 @@ a, ul {
     list-style: none;
     text-decoration: none;
 }
+
+button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+button:hover,
+button:active {
+    background-color: #939292;
+}
