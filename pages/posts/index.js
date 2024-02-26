@@ -3,7 +3,7 @@ import {Fragment} from "react";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function PostsPage(props) {
+export default function PostsPage() {
   return (
     <Fragment>
       <Head>
@@ -14,7 +14,7 @@ export default function PostsPage(props) {
         />
       </Head>
       <p>post page</p>
-      <PostList posts={props.posts}/>
+      <PostList />
       <Link href='/posts/new'>new post</Link>
     </Fragment>
   )

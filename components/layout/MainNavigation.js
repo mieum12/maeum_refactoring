@@ -27,11 +27,19 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 10px;
 
   ul {
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: baseline;
   }
+  a {
+    margin: 10px;
+  }
+
+  a:hover,
+  a:active {
+    color: white;
+  }
+  
 `

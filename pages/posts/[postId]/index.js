@@ -2,7 +2,7 @@ import {Fragment} from "react";
 import PostDetail from "@/components/posts/PostDetail";
 import Head from "next/head";
 
-export default function PostDetailPage(props) {
+export default function PostDetailPage() {
   return (
     <Fragment>
       <Head>
