@@ -7,6 +7,7 @@ import CommentsList from "@/components/comments/CommentsList";
 import NewCommentForm from "@/components/comments/NewCommentForm";
 
 export default function PostDetailPage(props) {
+
   return (
     <Fragment>
       <Head>

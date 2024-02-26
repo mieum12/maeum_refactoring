@@ -16,7 +16,7 @@ export default function NewPostPage() {
     })
     const data = await response.json()
     console.log(data)
-    await router.push('/')
+    await router.push('/posts')
   }
   return (
     <Fragment>

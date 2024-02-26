@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 
 export default function PostDetail(props) {
+
   return (
     <PostWrapper>
       <h1>{props.title}</h1>
@@ -12,7 +13,10 @@ export default function PostDetail(props) {
         height={300}
       />
       <summary>{props.summary}</summary>
-      <p>{props.description}</p>
+      <p
+        dangerouslySetInnerHTML={{
+        __html: props.description.replace(/\n/g, '<br/>')
+      }}/>
     </PostWrapper>
 
   )
