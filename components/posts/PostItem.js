@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function PostItem(props) {
   return (
     <ItemWrapper>
-      <Link href={props.id}>
+      <Link href={ '/posts/' + props.id}>
         <div>
           <Image
             className='image'
