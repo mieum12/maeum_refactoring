@@ -28,7 +28,7 @@ export default function PostsPage(props) {
 // 데이터가 로딩될때까지 기다렸다가 이 컴포넌트 함수를 위한 프로퍼티를 반환
 export async function getStaticProps() {
   const { client, postsCollection } = await connectToPostCollection();
-  const posts = await postsCollection.find().toArray()
+  const posts = await postsCollection.find().sort({_id: -1}).toArray()
   await client.close()
   // 항상 객체를 반환하는 것이 중요하다
   return {
