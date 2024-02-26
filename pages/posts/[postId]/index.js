@@ -3,6 +3,7 @@ import PostDetail from "@/components/posts/PostDetail";
 import Head from "next/head";
 import {connectToPostCollection} from "@/lib/db";
 import {ObjectId} from "mongodb";
+import CommentsList from "@/components/comments/CommentsList";
 
 export default function PostDetailPage(props) {
   return (
@@ -20,6 +21,7 @@ export default function PostDetailPage(props) {
         summary={props.postData.summary}
         description={props.postData.description}
       />
+      <CommentsList postId={props.postData.id}/>
     </Fragment>
   )
 }
