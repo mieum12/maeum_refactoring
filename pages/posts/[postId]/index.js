@@ -4,6 +4,7 @@ import Head from "next/head";
 import {connectToPostCollection} from "@/lib/db";
 import {ObjectId} from "mongodb";
 import CommentsList from "@/components/comments/CommentsList";
+import NewCommentForm from "@/components/comments/NewCommentForm";
 
 export default function PostDetailPage(props) {
   return (
@@ -22,6 +23,7 @@ export default function PostDetailPage(props) {
         description={props.postData.description}
       />
       <CommentsList postId={props.postData.id}/>
+      <NewCommentForm postId={props.postData.id}/>
     </Fragment>
   )
 }

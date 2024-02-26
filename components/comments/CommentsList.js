@@ -35,7 +35,7 @@ const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 500px;
+  width: 70%;
 
   .list {
     text-align: left;
