@@ -58,30 +58,24 @@ export default function NewPostForm(props) {
 
 const FormWrapper = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  margin: 10px;
+  margin: 0 auto;
+  max-width: 600px;
 `
 
 const Form = styled.form`
-  padding: 10px;
+  padding: 20px;
   margin: 20px;
 
-  label {
-    display: block;
-    font-weight: bold;
-    margin: 10px;
-  }
-
   input, textarea {
-    display: block;
-    font: inherit;
+    margin: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
-    padding: 0.25rem;
-    width: 100%;
+    padding: 5px;
+    width: 95%;
   }
   
   .btn {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 10px;
     text-align: right;
   }
