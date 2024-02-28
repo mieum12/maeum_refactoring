@@ -15,7 +15,7 @@ export default function MainNavigation() {
             <Link href='/posts'>All Posts</Link>
           </li>
           <li>
-            <Link href='/'>My Page</Link>
+            <Link href='/auth'>Auth</Link>
           </li>
         </ul>
       </Nav>
