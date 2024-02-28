@@ -84,27 +84,21 @@ export default function NewCommentForm(props) {
 const Form = styled.form`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   margin: 50px auto;
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
   width: 70%;
   padding: 30px;
-  
-  div {
-    flex-direction: column;
-  }
+  max-width: 500px;
 
   input, textarea {
+    margin: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
     padding: 0.25rem;
     width: 90%;
   }
-  
+
   .btn {
-    flex-direction: column;
-    width: 100px;
+    margin-top: 30px;
     margin-bottom: 10px;
-    //text-align: right;
   }
 `
