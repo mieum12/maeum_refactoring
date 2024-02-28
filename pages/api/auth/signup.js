@@ -5,7 +5,11 @@
 import {connectDatabase} from "@/lib/db";
 import {hashPassword} from "@/lib/auth";
 
-async function handler(req, res) {
+export default async function handler(req, res) {
+  // 0. POST 일때만 진행
+  if (req.method !== 'POST') {
+    return
+  }
 
   // 1. 이메일, 비번 가져오기
   // 유효한 데이터가 있을때만 작업하기 위해 들어오는 데이터 먼저 구성하기
@@ -46,13 +50,6 @@ async function handler(req, res) {
   })
 
   console.log('✅result', result)
-
-  // 같은 이메일의 유저가 이미 존재하면 true 반환
-  const existingUser = await db.collection('users').findOne({email: email})
-  if (existingUser) {
-    res.status(422).json({message: 'User already exist.'})
-    client.close() // db연결 해제
-    return;
-  }
-
+  res.status(201).json({message:'Create user!'})
+  client.close()
 }
