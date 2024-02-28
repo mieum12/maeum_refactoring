@@ -18,5 +18,8 @@ https://github.com/mieum12/AIproject-ma-eum-front
   - 페이지 라우터 학습 프로젝트: https://github.com/mieum12/next-page-router-project
 - 2가지 게시판을 하나로 통일
 - next-auth의 사용으로 인증 시스템 구현
+  - next-auth는 서버 사이드 및 클라이언트 사이드 유효성 검 둘 모두 수행 가능
+  - 인증 토큰, JWT 생성 가능 but 사용자 생성 관리는 못함. 따로 로직 필요.
+  - 자체적인 회원가입 API route와 사용자 인증논리를 가져와야함
 - 🔺 AI 부분의 생략... 
   - 모든 기능이 구현되면 한번 도전해보기
