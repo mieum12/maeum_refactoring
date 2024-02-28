@@ -1,5 +1,7 @@
+import {useRouter} from "next/router";
 import {useRef, useState} from "react";
 import styled from "@emotion/styled";
+import {signIn} from "next-auth/react";
 import CreateUser from "@/components/auth/CreateUser";
 
 export default function AuthForm() {
@@ -7,6 +9,7 @@ export default function AuthForm() {
   const passwordInputRef = useRef()
 
   const [isLogin, setIsLogin] = useState(true);
+  const router = useRouter()
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
@@ -24,7 +27,16 @@ export default function AuthForm() {
 
     // 1. 로그인 모드일때 폼 제출 = 로그인 시킨다
     if (isLogin) {
-
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: enteredEmail,
+        password: enteredPassword,
+      })
+      console.log('로그인 결과: ', result)
+      // 에러가 안나고 제대로 로그인에 성공하면 홈으로
+      if(!result.error) {
+        await router.replace('/')
+      }
     } else {
       // 2. 회원가입 모드일 때 = 회원가입 로직
       try {

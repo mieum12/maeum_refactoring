@@ -39,11 +39,19 @@ export default async function handler(req, res) {
   const client = await connectDatabase()
   const db = client.db()
 
+  // 3-1. 이미 있는 사용자인지 확인
+  const existingUser = await db.collection('users').findOne({email: email})
 
-  // 비번은 저장할 때 암호화하기
+  if (existingUser) {
+    res.status(422).json({message: 'User already exist.'})
+    client.close() // db연결 해제
+    return;
+  }
+
+  // 3-2. 비번은 저장할 때 암호화하기
   const hashedPassword = await hashPassword(password)
 
-  // users라는 컬렉션 생성하기 (사용자 추가)
+  // 3-3. users라는 컬렉션 생성하기 (사용자 추가)
   const result = await db.collection('users').insertOne({
     email: email,
     password: hashedPassword
