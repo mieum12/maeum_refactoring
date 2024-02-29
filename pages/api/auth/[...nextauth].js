@@ -32,7 +32,7 @@ export const authOptions = {
 
         if(!user) {
           client.close()
-          throw new Error('No user found!')
+          throw new Error('회원이 아님! No user found!')
         }
 
         // user가 제출한 비번, 데이터베이스에 저장되어있는 비번끼리 맞는지 비교
@@ -40,7 +40,7 @@ export const authOptions = {
         // 비번이 다를 때
         if (!isValid) {
           client.close()
-          throw new Error('Could not log you in!')
+          throw new Error('비번이 다름! Could not log you in!')
         }
 
         // authorize 함수 안에서 객체를 반환하며 NextAuth 인증이 성공했다고 알리기
