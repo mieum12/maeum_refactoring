@@ -23,6 +23,13 @@ export default function AuthForm() {
     });
   }
 
+  async function handleNaver() {
+    const result = await signIn("naver", {
+      redirect: true,
+      callbackUrl: "/",
+    });
+  }
+
   async function submitHandler(e) {
     e.preventDefault();
 
@@ -85,6 +92,7 @@ export default function AuthForm() {
       </Form>
       <SocialLogin>
         <Image onClick={handleKakao} className='kakaoLogin' src='/kakao.png' alt='kakao login button' width='155' height='40'/>
+        <Image onClick={handleNaver} className='naverLogin' src='/naver.png' alt='kakao login button' width='155' height='40'/>
       </SocialLogin>
 
     </FormWrapper>
@@ -131,7 +139,11 @@ const Form = styled.form`
 `
 
 const SocialLogin = styled.div`
-  .kakaoLogin:hover {
+  .kakaoLogin, .naverLogin {
+    margin: 5px;
+  }
+  .kakaoLogin:hover,
+  .naverLogin:hover {
     cursor: pointer;
     transform: scale(1.02);
   }  

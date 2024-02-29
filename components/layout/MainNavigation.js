@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {signOut, useSession} from "next-auth/react";
+import Image from "next/image";
 
 export default function MainNavigation() {
 
@@ -36,7 +37,9 @@ export default function MainNavigation() {
           )}
           {session && (
             <li>
-              <Link href='/my-page'>My Page</Link>
+              <Link href='/my-page'>
+                <Image className='profileImg' alt={session.user.name} src={session.user.image} width='30' height='30'/>
+              </Link>
             </li>
           )}
           {session && (
@@ -58,7 +61,7 @@ const Nav = styled.nav`
 
   ul {
     display: flex;
-    align-items: baseline;
+    align-items: center;
   }
   a {
     margin: 10px;
@@ -78,6 +81,13 @@ const Nav = styled.nav`
   .logout:hover {
     color: white;
     background: none;
+  }
+  .profileImg {
+    border-radius: 50%
+  }
+
+  .profileImg:hover {
+    transform: scale(1.5);
   }
   
 `

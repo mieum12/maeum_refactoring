@@ -63,10 +63,10 @@ export const authOptions = {
         }
       }
     }),
-    // NaverProvider({
-    //   clientId: process.env.NAVER_CLIENT_ID,
-    //   clientSecret: process.env.NAVER_SECRET,
-    // }),
+    NaverProvider({
+      clientId: process.env.NAVER_CLIENT_ID,
+      clientSecret: process.env.NAVER_SECRET,
+    }),
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID,
       clientSecret: process.env.KAKAO_SECRET,
