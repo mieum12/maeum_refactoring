@@ -1,3 +1,5 @@
+import {useSession} from "next-auth/react";
+import Image from "next/image";
 
 export default function MyProfile() {
   // 클라이언트 사이드에서 페이지 가드의 두가지 방법: useSession & getSession
@@ -5,7 +7,7 @@ export default function MyProfile() {
   //   요청을 보낸 사용자의 인증 여부를 확인 해 페이지 가드를 해준다
 
   // 1. useSession : loading이 계속 true인 버그 발생, 로딩인지 미인증인지 구분 x
-  // const [session, status] = useSession()
+  const { data: session, status} = useSession()
 
   // 2. getSession
   //   const [isLoading, setIsLoading] = useState(true)
@@ -22,10 +24,20 @@ export default function MyProfile() {
   // if (isLoading) {
   //   return <h1>Loading ... 🏃🏻‍♀️</h1>
   // }
+  //
+  // 3. 서버사이드에서 getServerSideProps 사용
 
   return (
     <div>
       <h1>My Profile Page</h1>
+      {session && (
+          <div>
+            <Image alt={session.user.name} src={session.user.image} width='100' height='100'/>
+
+            <p>email: {session.user.email}</p>
+            <p>name: {session.user.name}</p>
+          </div>
+      )}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import {useRouter} from "next/router";
 import {useRef, useState} from "react";
 import styled from "@emotion/styled";
+import Image from "next/image";
 import {signIn} from "next-auth/react";
 import CreateUser from "@/components/auth/CreateUser";
 
@@ -13,6 +14,13 @@ export default function AuthForm() {
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
+  }
+
+  async function handleKakao() {
+    const result = await signIn("kakao", {
+      redirect: true,
+      callbackUrl: "/",
+    });
   }
 
   async function submitHandler(e) {
@@ -72,8 +80,13 @@ export default function AuthForm() {
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
+
         </div>
       </Form>
+      <SocialLogin>
+        <Image onClick={handleKakao} className='kakaoLogin' src='/kakao.png' alt='kakao login button' width='155' height='40'/>
+      </SocialLogin>
+
     </FormWrapper>
   );
 }
@@ -113,4 +126,13 @@ const Form = styled.form`
     background-color: dimgray;
     color: white;
   }
+  
+  
+`
+
+const SocialLogin = styled.div`
+  .kakaoLogin:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }  
 `

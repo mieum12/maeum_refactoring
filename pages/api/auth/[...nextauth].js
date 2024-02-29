@@ -2,6 +2,8 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 import {connectDatabase} from "@/lib/db";
 import {verifyPassword} from "@/lib/auth";
+import NaverProvider from "next-auth/providers/naver"
+import KakaoProvider from "next-auth/providers/kakao"
 
 /**
  * [] :  동적 catch-all API 라우트로, api/auth로 시작되는 모든 라우트를 잡아냄
@@ -16,9 +18,17 @@ export const authOptions = {
     // 아래것으로 바뀌었다함
     // strategy: "jwt",
   },
-  // 크레덴결셜 기반의 인증
+  // 1. 크레덴셜 기반의 인증
   providers: [
     CredentialsProvider({
+      id : 'userInfo',
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "text", placeholder: "email@email.com" },
+        password: {  label: "Password", type: "password" }
+      },
+      // authorize 콜백은 credentials 값을 통해 해당 사용자가 로그인이 가능한지 여부를 판단하여
+      // 로그인을 제어할 수 있는 함수
       async authorize(credentials) {
         const client = await connectDatabase()
 
@@ -52,8 +62,27 @@ export const authOptions = {
           email: user.email
         }
       }
-    })
-  ]
+    }),
+    // NaverProvider({
+    //   clientId: process.env.NAVER_CLIENT_ID,
+    //   clientSecret: process.env.NAVER_SECRET,
+    // }),
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_SECRET,
+    }),
+
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
+  },
 }
 
 export default NextAuth(authOptions)

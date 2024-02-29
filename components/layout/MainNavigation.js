@@ -36,12 +36,12 @@ export default function MainNavigation() {
           )}
           {session && (
             <li>
-              <Link href='/auth'>My Page</Link>
+              <Link href='/my-page'>My Page</Link>
             </li>
           )}
           {session && (
             <li>
-              <button onClick={logoutHandler}>Log Out</button>
+              <button className='logout' onClick={logoutHandler}>Log Out</button>
             </li>
           )}
         </ul>
@@ -67,6 +67,17 @@ const Nav = styled.nav`
   a:hover,
   a:active {
     color: white;
+  }
+  
+  .logout {
+    border: none;
+    padding: 0;
+    margin: 10px;
+  }
+  
+  .logout:hover {
+    color: white;
+    background: none;
   }
   
 `
