@@ -3,7 +3,6 @@ import {Fragment} from "react";
 import Head from "next/head";
 import Link from "next/link";
 import {connectToPostCollection} from "@/lib/db";
-import {useSession} from "next-auth/react";
 
 export default function PostsPage(props) {
   return (

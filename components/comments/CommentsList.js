@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export default function CommentsList(props) {
   const { postId } = props;
@@ -21,9 +22,16 @@ export default function CommentsList(props) {
         {comments.map( comment => (
           <div className='list' key={comment._id}>
             <p>{comment.text}</p>
-            <div>
-              By {comment.user}
-            </div>
+            <p className='comment-author'>
+              <Image
+                src={comment.user.image}
+                alt={comment.user.name}
+                width={30}
+                height={30}
+                className='authorImg'
+              />
+              <div>By {comment.user.name}</div>
+            </p>
           </div>
         ))}
     </CommentWrapper>
@@ -31,6 +39,7 @@ export default function CommentsList(props) {
 }
 
 const CommentWrapper = styled.div`
+  opacity : 0.5;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
@@ -42,6 +51,17 @@ const CommentWrapper = styled.div`
     text-align: left;
     border-bottom: 1px solid #ccc;
     width: auto;
+  }
+  
+  .comment-author {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  
+  .authorImg {
+    border-radius: 50%;
+    margin: 5px;
   }
 
   .list p {

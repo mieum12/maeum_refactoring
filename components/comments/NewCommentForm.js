@@ -25,7 +25,7 @@ export default function NewCommentForm(props) {
     }
 
     addCommentHandler({
-      user: session.user.name,
+      user: session.user,
       text: enteredComment,
     });
   }

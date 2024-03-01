@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   const postId = req.query.postId
   const client = await connectDatabase()
 
-
   if (req.method === 'POST') {
     const { user, text } = req.body
     // 서버사이드 유효성 검사 추가
