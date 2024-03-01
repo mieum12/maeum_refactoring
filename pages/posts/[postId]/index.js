@@ -22,6 +22,7 @@ export default function PostDetailPage(props) {
         title={props.postData.title}
         summary={props.postData.summary}
         description={props.postData.description}
+        user={props.postData.user}
       />
       <CommentsList postId={props.postData.id}/>
       <NewCommentForm postId={props.postData.id}/>
@@ -61,7 +62,8 @@ export async function getStaticProps(context){
         title: selectedPost.title,
         summary: selectedPost.summary,
         image: selectedPost.image,
-        description: selectedPost.description
+        description: selectedPost.description,
+        user: selectedPost.user
       }
     }
   }

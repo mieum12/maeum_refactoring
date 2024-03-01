@@ -3,6 +3,7 @@ import {Fragment} from "react";
 import Head from "next/head";
 import Link from "next/link";
 import {connectToPostCollection} from "@/lib/db";
+import {useSession} from "next-auth/react";
 
 export default function PostsPage(props) {
   return (
@@ -30,6 +31,7 @@ export async function getStaticProps() {
   const { client, postsCollection } = await connectToPostCollection();
   const posts = await postsCollection.find().sort({_id: -1}).toArray()
   await client.close()
+
   // 항상 객체를 반환하는 것이 중요하다
   return {
     // props는 이 페이지 컴포넌트에 대한 props이다
@@ -40,6 +42,7 @@ export async function getStaticProps() {
         image: post.image,
         description: post.description,
         id: post._id.toString(),
+        user: post.user
       }))
     },
     revalidate: 1

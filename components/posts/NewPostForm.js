@@ -1,11 +1,14 @@
 import {useRef} from "react";
 import styled from "@emotion/styled";
+import {useSession} from "next-auth/react";
 
 export default function NewPostForm(props) {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const summaryInputRef = useRef();
   const descriptionInputRef = useRef();
+
+  const { data: session, status} = useSession()
 
   function submitHandler(event) {
     event.preventDefault();
@@ -20,6 +23,7 @@ export default function NewPostForm(props) {
       image: enteredImage,
       summary: enteredSummary,
       description: enteredDescription,
+      user: session.user
     };
 
     props.onAddPost(postData);

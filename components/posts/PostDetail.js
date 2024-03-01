@@ -6,12 +6,14 @@ export default function PostDetail(props) {
   return (
     <PostWrapper>
       <h1>{props.title}</h1>
+      <div> By. {props.user.name}</div>
       <Image
         src={props.image}
         alt={props.title}
         width={300}
         height={300}
       />
+
       <summary>{props.summary}</summary>
       <p
         dangerouslySetInnerHTML={{
