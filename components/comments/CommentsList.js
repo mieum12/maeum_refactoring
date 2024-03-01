@@ -22,7 +22,7 @@ export default function CommentsList(props) {
           <div className='list' key={comment._id}>
             <p>{comment.text}</p>
             <div>
-              By {comment.name}
+              By {comment.user}
             </div>
           </div>
         ))}

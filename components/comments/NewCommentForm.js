@@ -1,28 +1,22 @@
 import { useRef, useState } from 'react';
 import styled from "@emotion/styled";
+import {useSession} from "next-auth/react";
 
 export default function NewCommentForm(props) {
   const { postId } = props;
+  const {data:session, status} = useSession()
 
   const [isInvalid, setIsInvalid] = useState(false);
 
-  const emailInputRef = useRef();
-  const nameInputRef = useRef();
   const commentInputRef = useRef();
 
   function sendCommentHandler(event) {
     event.preventDefault();
 
-    const enteredEmail = emailInputRef.current.value;
-    const enteredName = nameInputRef.current.value;
     const enteredComment = commentInputRef.current.value;
 
     if (
-      !enteredEmail ||
-      enteredEmail.trim() === '' ||
-      !enteredEmail.includes('@') ||
-      !enteredName ||
-      enteredName.trim() === '' ||
+      !session ||
       !enteredComment ||
       enteredComment.trim() === ''
     ) {
@@ -31,8 +25,7 @@ export default function NewCommentForm(props) {
     }
 
     addCommentHandler({
-      email: enteredEmail,
-      name: enteredName,
+      user: session.user.name,
       text: enteredComment,
     });
   }
@@ -64,18 +57,10 @@ export default function NewCommentForm(props) {
   return (
     <Form onSubmit={sendCommentHandler}>
       <div>
-        <label htmlFor='email'>Your email</label>
-        <input type='email' id='email' ref={emailInputRef} />
-      </div>
-      <div>
-        <label htmlFor='name'>Your name</label>
-        <input type='text' id='name' ref={nameInputRef} />
-      </div>
-      <div>
         <label htmlFor='comment'>Your comment</label>
         <textarea id='comment' rows='5' ref={commentInputRef}></textarea>
       </div>
-      {isInvalid && <p>Please enter a valid email address and comment!</p>}
+      {isInvalid && <p>Please enter a valid comment! or Log in!</p>}
       <button className='btn'>Submit</button>
     </Form>
   );

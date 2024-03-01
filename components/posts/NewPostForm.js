@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import { useRef, useState} from "react";
 import styled from "@emotion/styled";
 import {useSession} from "next-auth/react";
 
@@ -8,7 +8,13 @@ export default function NewPostForm(props) {
   const summaryInputRef = useRef();
   const descriptionInputRef = useRef();
 
+  const [isInvalid, setIsInvalid] = useState(false);
   const { data: session, status} = useSession()
+
+  if (!session) {
+    window.location.href = '/posts'
+    alert('로그인이 필요한 서비스입니다!') // 두번뜨는 오류..
+  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -17,6 +23,22 @@ export default function NewPostForm(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredSummary = summaryInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
+
+    // 유효성 검사
+    if (
+      !session ||
+      !enteredTitle ||
+      enteredTitle.trim() === '' ||
+      !enteredImage ||
+      enteredImage.trim() === '' ||
+      !enteredSummary ||
+      enteredSummary.trim() === '' ||
+      !enteredDescription ||
+      enteredDescription.trim() === ''
+    ) {
+      setIsInvalid(true);
+      return;
+    }
 
     const postData = {
       title: enteredTitle,
@@ -52,6 +74,8 @@ export default function NewPostForm(props) {
             ref={descriptionInputRef}
           ></textarea>
         </div>
+        {isInvalid && <p>Please enter a valid form!</p>}
+
         <div className='btn'>
           <button>Add Post</button>
         </div>

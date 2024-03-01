@@ -6,12 +6,10 @@ export default async function handler(req, res) {
 
 
   if (req.method === 'POST') {
-    const { email, name, text } = req.body
+    const { user, text } = req.body
     // 서버사이드 유효성 검사 추가
     if (
-      !email.includes('@') ||
-      !name ||
-      name.trim() === '' ||
+      !user ||
       !text ||
       text.trim() === ''
     ) {
@@ -21,8 +19,7 @@ export default async function handler(req, res) {
 
     // 새로운 객체를 만들어 반환
     const NewComment = {
-      email,
-      name,
+      user,
       text,
       postId,
     }
