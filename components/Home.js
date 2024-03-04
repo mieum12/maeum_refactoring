@@ -64,7 +64,10 @@ export default function HomePage() {
         <div className='text'>나 자신을 가장 잘 돌봐야하는 것은 나 자신입니다.</div>
       </section>
       <Link href='/ai' >
-        <button className='btn'>AI 처방전 받으러 가기</button>
+        <button className='btn'>💉 AI 처방전 받으러 가기</button>
+      </Link>
+      <Link href='/posts' >
+        <button className='btn'>👀 다른 사람들이 공유한 처방전 보러가기</button>
       </Link>
     </HomeWrapper>
   )
@@ -96,6 +99,7 @@ const HomeWrapper = styled.div`
   
   .btn {
     margin-bottom: 100px;
+    margin-left: 10px;
   }
 `
 

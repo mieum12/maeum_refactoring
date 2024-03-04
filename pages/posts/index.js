@@ -14,10 +14,12 @@ export default function PostsPage(props) {
           content='post page!'
         />
       </Head>
-      <p>post page</p>
+      <p>다른 사람들에게 나만의 처방전을 공유해주세요!</p>
+      <p>책, 영화, 드라마, 음악 등 나의 감정에 오롯이 집중할 수 있는 컨텐츠를 추천해주세요!</p>
+      <p>( ex. 우울한 기분을 이겨내고 싶을 때 추천하는 노래 )</p>
 
         <Link href='/posts/new'>
-          <button>Let's make new post!</button>
+          <button>New Post!</button>
         </Link>
 
       <PostList posts={props.posts}/>
